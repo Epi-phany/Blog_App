@@ -5,7 +5,7 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = CloudinaryField('image',default='default.png')
+    image = CloudinaryField('image',default='default_awn5ab')
 
     # image = models.ImageField(default='default.png', upload_to='profile_pics')
 
