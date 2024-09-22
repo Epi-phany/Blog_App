@@ -14,6 +14,7 @@ import environ
 
 from pathlib import Path
 from decouple import config
+import dj_database_url
 
 
 env = environ.Env()
@@ -32,7 +33,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["localhost", "127.0.0.1",'https://blog-app-afce.onrender.com']
 
 
 # Application definition
@@ -99,6 +100,10 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+database_url = config('DATABASE_URL')
+if database_url:
+    DATABASES ['default'] = dj_database_url.parse(database_url)
 
 
 # Password validation
